@@ -2,16 +2,14 @@ package ru.job4j.puzzle;
 
 public class Win {
     public static boolean check(int[][] board) {
-        boolean rsl = true;
+        boolean rsl = false;
         for (int i = 0; i < board.length; i++) {
-            if(i == 0 || rsl != true ) {  rsl = checkRow(board, i); }
+            if(board[i][i] == 0 && (checkRow(board,i)||checkColumn(board,i))) {
+                rsl = true;}
+                break;
         }
 
-       for (int i = 0; i < board.length; i++) {
-             if(rsl == false )  rsl = checkColumn(board, i);
-       }
-
-        return rsl;
+            return rsl;
     }
 
     public static boolean checkRow(int[][] board, int row) {
